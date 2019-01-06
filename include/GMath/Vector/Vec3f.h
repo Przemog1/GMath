@@ -18,7 +18,7 @@ namespace gmath
 
 		Vec3f& normalize();
 
-		float getLength();
+		float getLength() const;
 
 		void print() const;
 	};

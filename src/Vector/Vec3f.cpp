@@ -39,13 +39,16 @@ namespace gmath
 	{
 		float length = sqrt(x*x + y * y);
 
+		if (length == 0.0f)
+			return *this;
+
 		x /= length;
 		y /= length;
 
 		return *this;
 	}
 
-	float Vec3f::getLength()
+	float Vec3f::getLength() const
 	{
 		return sqrt(x*x + y * y);
 	}

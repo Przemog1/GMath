@@ -10,10 +10,15 @@ namespace gmath
 	public:
 			//constructs zero 4x4 matrix
 		Mat4f();
-		Mat4f(float diagonal);
+		explicit Mat4f(float diagonal);
 		
 		Mat4f& operator*=(const Mat4f& other);
 		Mat4f& inverse();
+
+
+
+		inline float& operator()(int i, int j)		 { return matrix[i][j]; };
+		inline float  operator()(int i, int j) const { return matrix[i][j]; };
 
 		Vec4f getTranslation4f() const;
 		Vec3f getTranslation3f() const;
