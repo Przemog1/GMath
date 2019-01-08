@@ -8,7 +8,7 @@ namespace gmath
 		float y;
 
 		Vec2f();
-		Vec2f(float s);
+		explicit Vec2f(float s);
 		Vec2f(float x, float y);
 
 		Vec2f& operator+=(const Vec2f& other);

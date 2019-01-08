@@ -104,11 +104,6 @@ namespace gmath
 
 		const Vec3f upv = crossProduct(forward, right);
 
-		
-		right.print();
-		upv.print();
-		forward.print();
-
 		std::cout << std::endl;
 
 		Mat4f result;
@@ -126,7 +121,35 @@ namespace gmath
 		return result;
 	}
 
-	Mat4f ortho(float left, float right, float bottom, float top, float near, float far);
+	Mat4f ortho(float left, float right, float bottom, float top, float near, float far)
+	{
+		Mat4f result;
 
-	Mat4f perspective(float FOV, float aspectRatio, float near, float far);
+		result(0, 0) = 2.0f / (right - left);
+		result(1, 1) = 2.0f / (top - bottom);
+		result(2, 2) = 2.0f / (near - far);
+
+		result(0, 3) = (right + left) / (left - right);
+		result(1, 3) = (top + bottom) / (bottom - top);
+		result(2, 3) = (far + near) / (near - far);
+
+		result(3, 3) = 1.0f;
+
+		return result;
+	}
+
+	Mat4f perspective(float FOV, float aspectRatio, float near, float far)
+	{
+		Mat4f result;
+
+		result(0, 0) = 1.0f / tan(FOV / 2.0f);
+		result(1, 1) = aspectRatio / tan(FOV / 2.0f);
+
+		result(2, 2) = (near + far) / (near - far);
+		result(2, 3) = (2.0f * near * far) / (near - far);
+
+		result(3, 2) = -1.0f;
+
+		return result;
+	}
 }

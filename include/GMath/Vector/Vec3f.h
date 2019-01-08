@@ -9,7 +9,7 @@ namespace gmath
 		float z;
 
 		Vec3f();
-		Vec3f(float s);
+		explicit Vec3f(float s);
 		Vec3f(float x, float y, float z);
 
 		Vec3f& operator+=(const Vec3f& other);

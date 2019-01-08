@@ -50,7 +50,7 @@ namespace gmath
 
 	float Vec3f::getLength() const
 	{
-		return sqrt(x*x + y * y);
+		return sqrt(x*x + y * y + z*z);
 	}
 
 	void Vec3f::print() const
